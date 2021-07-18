@@ -1,0 +1,72 @@
+<app-bread-crump [items]="[{text: 'Usuários', link: '/users'}, {text: pageTitle}]"></app-bread-crump>
+
+<app-page-header [page-title]="pageTitle" button-text="<< Voltar" button-link="/users" button-class="btn-light">
+</app-page-header>
+
+<form [formGroup]="userForm" (submit)="submitForm()">
+  <div class="card mb-3">
+    <div class="card-header">
+      Informações sobre o usuário
+    </div>
+
+    <div class="card-body">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" formControlName="nome" id="nome">
+
+          <app-form-field-error [form-control]="userForm.get('nome')"></app-form-field-error>
+        </div>
+        <div class="form-group col-md-8">
+          <label for="cpf">CPF</label>
+          <input type="text" mask="000.000.000-00" class="form-control"
+                 formControlName="cpf" id="cpf">
+
+          <app-form-field-error [form-control]="userForm.get('cpf')"></app-form-field-error>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="logradouro">Endereço</label>
+          <input type="text" class="form-control" formControlName="logradouro" id="logradouro">
+
+          <app-form-field-error [form-control]="userForm.get('logradouro')"></app-form-field-error>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="bairro">Bairro</label>
+          <input type="text" class="form-control" formControlName="bairro" id="bairro">
+
+          <app-form-field-error [form-control]="userForm.get('bairro')"></app-form-field-error>
+        </div>
+        <div class="col-md-6">
+          <label for="localidade">Cidade</label>
+          <input type="text" id="localidade" formControlName="localidade" class="form-control">
+
+          <app-form-field-error [form-control]="userForm.get('localidade')"></app-form-field-error>
+        </div>
+        <div class="col-md-3">
+          <label for="uf">Estado</label>
+          <input type="text" id="uf" formControlName="uf" class="form-control">
+
+          <app-form-field-error [form-control]="userForm.get('uf')"></app-form-field-error>
+        </div>
+        <div class="col-md-3">
+          <label for="cep">CEP</label>
+          <input type="text" mask="00000-000" id="cep" formControlName="cep"
+                 class="form-control">
+
+          <app-form-field-error [form-control]="userForm.get('cep')"></app-form-field-error>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-danger mt-4" *ngIf="serverErrorMessage">
+    <strong>Erro no servidor:</strong>
+    <ul>
+      <li *ngFor="let error of serverErrorMessage">{{error}}</li>
+    </ul>
+  </div>
+
+  <button [disabled]="submittingForm || userForm.invalid" type="submit" class="btn btn-primary btn-lg float-right">
+    Salvar
+  </button>
+</form>

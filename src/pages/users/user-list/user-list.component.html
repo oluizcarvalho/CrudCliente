@@ -1,0 +1,26 @@
+<app-bread-crump [items]="[{text: 'Usuários'}]"></app-bread-crump>
+
+<app-page-header page-title="Usuários" button-text="+ Novo Usuário" button-link="new" button-class="btn-success">
+</app-page-header>
+
+<table class="table table-hover">
+  <thead>
+  <tr class="bg-primary text-light">
+    <th>Usuário</th>
+    <th>Ações</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td>
+      <strong>{{user.nome}}</strong> - <span>{{user.cpf}}</span>
+      <br>
+      <small>{{user.logradouro}}, {{user.bairro}} - {{user.localidade}}</small>
+    </td>
+    <td>
+      <a [routerLink]="[user.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+      <button (click)="deleteUser(user)" class="btn btn-outline-danger btn-sm">Excluir</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

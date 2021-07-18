@@ -62,11 +62,11 @@ export class UsersService {
         return users;
     }
 
-    private static jsonDataToUser(jsonData: any): Users {
+    private jsonDataToUser(jsonData: any): Users {
         return jsonData as Users;
     }
 
-    private static handleError(error: any): Observable<any> {
+    private handleError(error: any): Observable<any> {
         return throwError(error);
     }
     //Fim
