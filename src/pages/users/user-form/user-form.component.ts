@@ -4,7 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Users} from "../shared/users.model";
 import {switchMap} from "rxjs/operators";
-import {toastr} from "toastr";
+
+import toastr from "toastr";
 
 @Component({
   selector: 'app-user-form',
@@ -61,7 +62,6 @@ export class UserFormComponent implements OnInit, AfterContentChecked {
             this.currentAction = 'new'
         else
             this.currentAction = 'edit'
-
     }
 
     private buildUsersForm() {
