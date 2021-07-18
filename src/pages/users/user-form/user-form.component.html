@@ -44,7 +44,11 @@
         </div>
         <div class="col-md-3">
           <label for="uf">Estado</label>
-          <input type="text" id="uf" formControlName="uf" class="form-control">
+          <select type="text" id="uf" formControlName="uf" class="form-control">
+            <option [value]="uf" *ngFor="let uf of listaEstados">
+              {{uf}}
+            </option>
+          </select>
 
           <app-form-field-error [form-control]="userForm.get('uf')"></app-form-field-error>
         </div>

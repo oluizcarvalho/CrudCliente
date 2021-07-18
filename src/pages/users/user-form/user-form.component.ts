@@ -19,6 +19,8 @@ export class UserFormComponent implements OnInit, AfterContentChecked {
   serverErrorMessage: string[] = null;
   submittingForm: boolean = false;
   user: Users = new Users();
+  listaEstados: string[] = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"];
+
 
   constructor(
     private usersService: UsersService,
@@ -111,11 +113,14 @@ export class UserFormComponent implements OnInit, AfterContentChecked {
 
   private updateUsers() {
     const user: Users = Object.assign(new Users(), this.userForm.value)
+    const mustUpdate = confirm(`Deseja realmente atualizar este usuário "${user.nome}" ?`);
 
-    this.usersService.update(user).subscribe(
-      user => this.actionsForSuccess(user),
-      error => this.actionsForError(error)
-    )
+    if (mustUpdate) {
+      this.usersService.update(user).subscribe(
+        user => this.actionsForSuccess(user),
+        error => this.actionsForError(error)
+      )
+    }
   }
 
   private actionsForSuccess(user: Users): void {
