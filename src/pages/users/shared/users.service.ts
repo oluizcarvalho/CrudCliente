@@ -53,9 +53,11 @@ export class UsersService {
     //delete on localStorage
     try {
       const localStorageUsers: Users[] = JSON.parse(localStorage.getItem("users"));
-      const indexOfRemove = localStorageUsers.findIndex(a => a.id == id);
-      localStorageUsers.splice(indexOfRemove);
-      localStorage.setItem("users", JSON.stringify(localStorageUsers));
+      if (localStorageUsers != null && localStorageUsers.length > 0) {
+        const indexOfRemove = localStorageUsers.findIndex(a => a.id == id);
+        localStorageUsers.splice(indexOfRemove, 1);
+        localStorage.setItem("users", JSON.stringify(localStorageUsers));
+      }
     } catch (e) {
       this.handleError(e);
     }
@@ -70,7 +72,9 @@ export class UsersService {
   private jsonDataToUsers(jsonData: any[]): Users[] {
     const users: Users[] = [];
     jsonData.forEach(element => users.push(element as Users));
-    localStorage.setItem("users", JSON.stringify(users));
+    if (users.length > 0) {
+      localStorage.setItem("users", JSON.stringify(users));
+    }
     return users;
   }
 
