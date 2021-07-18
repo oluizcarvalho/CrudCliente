@@ -35,7 +35,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 $ git clone <https://github.com/oluizcarvalho/CrudCliente>
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd finansys
+$ cd CrudCliente
 
 # Instale as dependências
 $ npm install
