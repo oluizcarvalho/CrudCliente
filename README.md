@@ -21,6 +21,8 @@ Projeto Cliente, CRUD com o fluxo natural features de um cadastro de clientes, c
 <p>•	Atualização do cadastro do cliente;</p>
 <p>•	Listagem dos clientes;</p>
 <p>•	Exclusão dos clientes;</p>
+Utilizei do in-memory-web-api para simular a parte de api e fiz a permanëncia de informações utlizando localStorage.
+
 ---
 
 ### Pré-requisitos
